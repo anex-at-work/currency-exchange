@@ -1,0 +1,30 @@
+<section class="content-holder">
+  <h1>Conversion history</h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.created | date: "dd/MM/yyyy @ HH:mm" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="event">
+      <th mat-header-cell *matHeaderCellDef>Event</th>
+      <td mat-cell *matCellDef="let element">{{ eventStr(element) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-button color="primary" routerLink="/convert/{{element.id}}">
+          <mat-icon>remove_red_eye</mat-icon> View
+        </a>
+        <button mat-button color="warn" (click)="onDelete(element)">
+          <mat-icon>delete_forever</mat-icon> Delete from history
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</section>

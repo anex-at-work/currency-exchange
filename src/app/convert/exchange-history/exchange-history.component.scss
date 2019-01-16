@@ -1,0 +1,10 @@
+.exchange-history {
+  &__tables {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    table {
+      flex-basis: 48%;
+    }
+  }
+}

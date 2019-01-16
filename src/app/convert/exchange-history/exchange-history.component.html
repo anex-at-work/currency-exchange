@@ -1,0 +1,44 @@
+<h3>Exchange History</h3>
+<mat-form-field>
+  <mat-select placeholder="Duration" [formControl]="duration">
+    <mat-option *ngFor="let dur of durations" [value]="dur.value">
+      {{ dur.text }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<section class="exchange-history__tables">
+  <table mat-table [dataSource]="historyRates" class="mat-elevation-z5" #rates>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.date | date: "dd/MM/yyyy" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rates">
+      <th mat-header-cell *matHeaderCellDef>Exchange rate</th>
+      <td mat-cell *matCellDef="let element">{{ element.rate }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <table
+    mat-table
+    [dataSource]="statisticsValues"
+    class="mat-elevation-z5"
+    #statistics
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Statistics</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsStatistics"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsStatistics"></tr>
+  </table>
+</section>

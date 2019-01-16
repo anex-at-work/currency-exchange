@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+  tr {
+    button,
+    a {
+      visibility: hidden;
+    }
+    &:hover {
+      button,
+      a {
+        visibility: visible;
+      }
+    }
+  }
+}

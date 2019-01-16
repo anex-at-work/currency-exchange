@@ -1,0 +1,36 @@
+<mat-toolbar class="toolbar mat-elevation-z3">
+  <div class="content-holder toolbar__holder">
+    <a routerLink="/" class="toolbar__logo">CurrencyExchange</a>
+    <ng-container *ngIf="isLogged">
+      <nav mat-tab-nav-bar class="toolbar__nav">
+        <a
+          mat-tab-link
+          routerLink="/convert"
+          routerLinkActive
+          #rlaConvert="routerLinkActive"
+          [active]="rlaConvert.isActive"
+        >
+          Currency converter
+        </a>
+        <a
+          mat-tab-link
+          routerLink="/history"
+          routerLinkActive
+          #rlaHistory="routerLinkActive"
+          [active]="rlaHistory.isActive"
+        >
+          View conversion history
+        </a>
+      </nav>
+      <a
+        mat-button
+        routerLink="/login"
+        color="primary"
+        (click)="logout()"
+        class="toolbar__logout"
+      >
+        Logout
+      </a>
+    </ng-container>
+  </div>
+</mat-toolbar>

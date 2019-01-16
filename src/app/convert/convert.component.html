@@ -1,0 +1,67 @@
+<section class="content-holder">
+  <h1>I want to convert</h1>
+  <form class="convert-form" [formGroup]="formGroup" *ngIf="exchangeRates">
+    <mat-form-field class="convert-form__input">
+      <input
+        matInput
+        type="number"
+        min="0"
+        placeholder="Amount"
+        formControlName="amount"
+      />
+    </mat-form-field>
+    <mat-form-field class="convert-form__select">
+      <mat-select placeholder="From" formControlName="from">
+        <mat-option *ngFor="let rate of exchangeRates" [value]="rate">
+          {{ rate.currency }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-icon-button
+      (click)="changeCurrencies()"
+      class="convert-form__change mat-elevation-z2"
+      color="primary"
+    >
+      <mat-icon>compare_arrows</mat-icon>
+    </button>
+    <mat-form-field class="convert-form__select">
+      <mat-select placeholder="To" formControlName="to">
+        <mat-option *ngFor="let rate of exchangeRates" [value]="rate">
+          {{ rate.currency }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      (click)="convertCurrencies()"
+      [disabled]="!formGroup.valid"
+      class="convert-form__convert"
+      color="primary"
+    >
+      Convert
+    </button>
+  </form>
+  <div class="convert-info">
+    <div class="convert-info__result" *ngIf="converted">
+      <span class="convert-info__result-from">
+        {{ converted.amount }} {{ fromCurrency.currency }} =
+      </span>
+      <span class="convert-info__result-to color-accent">
+        {{ converted.result.toFixed(6) }} {{ toCurrency.currency }}</span
+      >
+    </div>
+    <div class="convert-info__rates" *ngIf="isValues">
+      <div class="convert-info__rate">
+        1 {{ fromCurrency.currency }} = {{ rates.from.toFixed(6) }}
+        {{ toCurrency.currency }}
+      </div>
+      <div class="convert-info__rate">
+        1 {{ toCurrency.currency }} = {{ rates.to.toFixed(6) }}
+        {{ fromCurrency.currency }}
+      </div>
+    </div>
+  </div>
+</section>
+<hr />
+<app-exchange-history [rates]="fromTo"></app-exchange-history>

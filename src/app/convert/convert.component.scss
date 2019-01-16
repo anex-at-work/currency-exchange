@@ -1,0 +1,41 @@
+.convert-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__select {
+    flex-basis: 31%;
+  }
+  &__change {
+    $size: 36px;
+    background: #fff;
+    border-radius: 2px;
+    width: $size;
+    height: $size;
+    line-height: $size;
+  }
+  &__convert {
+    text-transform: uppercase;
+  }
+}
+.convert-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 40px;
+  &__result {
+    font-size: 48px;
+    margin-bottom: 35px;
+    &-to {
+      font-weight: 700;
+    }
+  }
+  &__rates {
+    .convert-info__rate:first-child {
+      margin-bottom: 10px;
+    }
+  }
+}
+hr {
+  border-color: #e3e3e3;
+  border-style: none none solid none;
+}

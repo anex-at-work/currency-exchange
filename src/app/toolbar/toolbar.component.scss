@@ -1,0 +1,28 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  &__holder {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  &__logo {
+    display: inline-block;
+    background: url("/assets/logo.png") transparent no-repeat;
+    width: 233px;
+    height: 27px;
+    margin-right: 32px;
+    text-indent: -10000%;
+    overflow: hidden;
+    outline: none;
+  }
+  &__nav {
+    text-transform: uppercase;
+    height: 100%;
+  }
+  &__logout {
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+}
